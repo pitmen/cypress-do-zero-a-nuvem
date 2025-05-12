@@ -2,27 +2,37 @@
 
 👋 Seja bem-vindo(a)!
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+Projeto de exemplo para o curso "Cypress, do Zero à Nuvem" da escola online Talking About Testing.
 
-## O que você vai aprender?
+## Pré-requisitos
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+É necessário ter o Node.js e o npm instalados para executar este projeto.
 
-## Vamos começar?
+> Usei as versões `2.42.1` e `20.13.1` do git, Node.js e npm, respectivamente. Sugiro que você use a mesma versão ou versões posteriores.
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+## Instalação
+
+Run `npm install` (or `npm i` for the short version) to install the dev dependencies.
+
+## Testes
+
+Você pode executar os testes simulando uma área de trabalho (desktop) ou uma janela de visualização móvel(mobile viewport).
+
+### Desktop
+
+Execute `npm test` (ou `npm t` para a versão curta) para executar o teste no modo headless em uma viewport de desktop.
+
+Ou execute `npm run cy:open` para abrir o Cypress no modo interativo em uma janela de exibição da área de trabalho.
+### Mobile
+
+Execute `npm run test:mobile` para executar o teste em modo headless em uma janela de visualização móvel.
+
+Ou execute `npm run cy:open:mobile` para abrir o Cypress em modo interativo em uma janela de visualização móvel.
+
+## Support this project
+
+Se você quiser apoiar este projeto, deixe um ⭐.
 
 ___
 
-Este é um curso da **Escola Talking About Testing**.
+Este projeto foi criado com 💚 por [Pitter](https://github.com/pitmen)
