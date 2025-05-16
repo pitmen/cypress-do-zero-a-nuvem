@@ -5,5 +5,6 @@ module.exports = defineConfig({
   viewportWidth: 1280,
   e2e: {},
   //video: true
+  projectId: "dt1mp9", //id do cypress cloud
 })
 
