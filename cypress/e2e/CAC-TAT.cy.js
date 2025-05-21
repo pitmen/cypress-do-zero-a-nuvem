@@ -9,6 +9,8 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('Preenche os campos obrigatórios e envia o formulário', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador 
+
     //const longText = 'Teste de preenchimento de formulário com Cypress.\n'.repeat(5) //comando utilizado para preencher o campo de mensagem
     const longText = Cypress._.repeat('Teste de preenchimento de formulário com Cypress.\n', 5) //comando utilizado para preencher o campo de mensagem
     cy.get('#firstName').type('Pitter') //comando utilizado para preencher o campo de nome
@@ -21,9 +23,14 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     
     cy.get('.success').should('be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
 
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
+
   })
 
   it('Exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador 
+
     cy.get('#firstName').type('Pitter') //comando utilizado para preencher o campo de nome
     cy.get('#lastName').type('Mendes Lacerda') //comando utilizado para preencher o campo de sobrenome
     cy.get('#email').type('pitter-puk@hotmail,com') //comando utilizado para preencher o campo de email com formatação inválida
@@ -32,9 +39,14 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     
     cy.get('.error').should('be.visible') //comando utilizado para verificar se a mensagem de erro foi exibida
 
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
+
   })
 
   it('Exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
     cy.get('#firstName').type('Pitter') //comando utilizado para preencher o campo de nome
     cy.get('#lastName').type('Mendes Lacerda') //comando utilizado para preencher o campo de sobrenome
     cy.get('#email').type('pitter-puk@hotmail,com') //comando utilizado para preencher o campo de email com formatação inválida
@@ -44,9 +56,14 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     //cy.contains('button', 'Enviar').click() //comando utilizado para clicar no botão de enviar
 
     cy.get('.error').should('be.visible') //comando utilizado para verificar se a mensagem de erro foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário 2', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
     cy.get('#firstName').type('Pitter') //comando utilizado para preencher o campo de nome
     cy.get('#lastName').type('Mendes Lacerda') //comando utilizado para preencher o campo de sobrenome
     cy.get('#email').type('pitter-puk@hotmail,com') //comando utilizado para preencher o campo de email com formatação inválida
@@ -56,6 +73,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.contains('button', 'Enviar').click() //comando utilizado para clicar no botão de enviar
 
     cy.get('.error').should('be.visible') //comando utilizado para verificar se a mensagem de erro foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Preenche e limpa os campos nome, sobrenome, email e telefone', () => {
@@ -70,19 +90,31 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
-    cy.get('button[type="submit"]').click() //comando utilizado para clicar no botão de enviar
-    //cy.contains('button', 'Enviar').click() //comando utilizado para clicar no botão de enviar
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
+    //cy.get('button[type="submit"]').click() //comando utilizado para clicar no botão de enviar
+    cy.contains('button', 'Enviar').click() //comando utilizado para clicar no botão de enviar
 
     cy.get('.error').should('be.visible') //comando utilizado para verificar se a mensagem de erro foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Envia o formulário com sucesso usando um comando customizado 1', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
     cy.fillMandatoryFieldsAndSubmitOld1() //comando utilizado para preencher os campos obrigatórios e enviar o formulário
     
     cy.get('.success').should('be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Envia o formulário com sucesso usando um comando customizado 2', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
     const data = {
       firstName: 'Pitter',
       lastName: 'Mendes Lacerda',
@@ -95,12 +127,20 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.fillMandatoryFieldsAndSubmitOld2(data) //comando utilizado para preencher os campos obrigatórios e enviar o formulário
     
     cy.get('.success').should('be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Envia o formulário com sucesso usando um comando customizado 3', () => {
+    cy.clock() //comando utilizado para congelar o relógio do navegador
+
     cy.fillMandatoryFieldsAndSubmit() //comando utilizado para preencher os campos obrigatórios e enviar o formulário
     
     cy.get('.success').should('be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
+
+    cy.tick(3000) //comando utilizado para avançar o relógio do navegador em 3 segundos
+    cy.get('.success').should('not.be.visible') //comando utilizado para verificar se a mensagem de sucesso foi exibida
   })
 
   it('Seleciona um produto (YouTube) por seu texto', () => {
@@ -211,8 +251,70 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.contains('h1', 'CAC TAT - Política de Privacidade').should('be.visible') //comando utilizado para verificar se o título da página é o correto
   }) // esta ficando em loop
 
+it('exibe e oculta as mensagens de sucesso e erro usando .invoke()', () => {
+  cy.get('.success') 
+    .should('not.be.visible') // mensagem de sucesso não deve estar visível
+    .invoke('show') // mostra a mensagem de sucesso
+    .should('be.visible') // mensagem de sucesso deve estar visível
+    .and('contain', 'Mensagem enviada com sucesso.') // verifica se a mensagem de sucesso contém o texto correto
+    .invoke('hide') // esconde a mensagem de sucesso
+    .should('not.be.visible') // mensagem de sucesso não deve estar visível
+    
+  cy.get('.error') // mensagem de erro não deve estar visível
+    .should('not.be.visible') // mensagem de erro não deve estar visível
+    .invoke('show') // mostra a mensagem de erro
+    .should('be.visible') // mensagem de erro deve estar visível
+    .and('contain', 'Valide os campos obrigatórios!') //  verifica se a mensagem de erro contém o texto correto
+    .invoke('hide') // esconde a mensagem de erro
+    .should('not.be.visible') // mensagem de erro não deve estar visível
+})
 
+  it('Preenche o campo da area de texto usando o comando invoke', () => {
+    //const longText = Cypress._.repeat('Teste de preenchimento de formulário com Cypress.\n', 5) //comando utilizado para preencher o campo de mensagem
+    cy.get('#open-text-area')
+      .invoke('val', 'Um texto qualquer') //comando utilizado para preencher a área de texto
+      //.should('have.value', longText) //comando utilizado para verificar se a área de texto foi preenchida corretamente
+      .should('have.value', 'Um texto qualquer') //comando utilizado para verificar se a área de texto foi preenchida corretamente
+  })
 
+  it('F  az uma requisição HTTP', () => {
+    cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
+      .as('getRequest') //comando utilizado para fazer uma requisição HTTP
+      .its('status') //comando utilizado para verificar o status da requisição
+      .should('be.equal', 200) //comando utilizado para verificar se o status da requisição é 200
+    cy.get('@getRequest')
+      .its('statusText') //comando utilizado para verificar o status da requisição
+      .should('be.equal', 'OK')
+    cy.get('@getRequest')
+      .its('body') //comando utilizado para verificar o status da requisição
+      .should('include', 'CAC TAT') //comando utilizado para verificar se o corpo da requisição contém o texto 'CAC TAT'
+      /*.then((response) => {
+        const { status, statusText, body } = response
+        console.log({ status, statusText, body })
+        expect(status).to.equal(200)
+        expect(statusText).to.equal('OK')
+        expect(body).to.include('CAC TAT')*/
+      })
 
+    it('Encontra o gato escondido', () => {
+      cy.get('#cat')
+        .invoke('show')
+        .should('be.visible') //comando utilizado para verificar se o gato está visível
+        .invoke('hide')
+        .should('not.be.visible') //comando utilizado para verificar se o gato não está visível
+    })
+
+    it('Encontra o gato escondido versão 2', () => {
+      cy.get('#cat')
+        .invoke('show')
+        .should('be.visible') //comando utilizado para verificar se o gato está visível
+      cy.get('#title')
+        .invoke('text', 'CAT TAT') //comando utilizado para verificar se o título é o correto
+        .should('have.text', 'CAT TAT') //comando utilizado para verificar se o título é o correto
+      cy.get('#subtitle')
+        .invoke('text', 'Eu 💙 gatos') //comando utilizado para verificar se o subtítulo é o correto
+        .should('have.text', 'Eu 💙 gatos') //comando utilizado para verificar se o subtítulo é o correto
+    })
 
 })
+
